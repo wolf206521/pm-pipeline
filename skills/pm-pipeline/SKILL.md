@@ -10,8 +10,8 @@ description: |
   「把一堆需求文档工程化」时使用。
   适用于 10+ 模块、多轮客户确认、需要跨会话/跨模型续跑的中大型需求项目。
   不含任何具体行业内容;不替代 PRD/流程图/原型撰写 skill,而是把它们串成流水线。
-version: "1.1"
-updated: "2026-10-10"
+version: "1.1.1"
+updated: "2026-10-13"
 ---
 
 # pm-pipeline · 多模块需求工程流水线
@@ -48,7 +48,7 @@ updated: "2026-10-10"
 - [references/audit-protocol.md](references/audit-protocol.md) —— 需求完整性审计协议(五维度)
 - [references/evolution.md](references/evolution.md) —— 自我进化机制
 - [references/jev-integration.md](references/jev-integration.md) —— Jev 决策集成(决策点清单/阈值模式/边界)
-- [references/prototype-depth.md](references/prototype-depth.md) —— 单页深度规范(五层结构+状态四态)
+- [references/prototype-depth.md](references/prototype-depth.md) —— 单页深度规范(五层结构+状态四态+呈现规范+页面声明约定)
 - [templates/](templates/) —— AGENTS.md / MEMORY.md / state.md / 决策日志 / G1确认单 骨架
 
 ## 工程目录结构(初始化时建立)
