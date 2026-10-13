@@ -52,19 +52,39 @@ G4 闸门的「单页深度」判定标准。目标:任何一页拿出来,客户
 - 流程图每条异常分支 → 原型里有对应入口(错误提示、驳回态、重试按钮),或在对照表标注「不在原型范围」及原因
 - 这两类信息必须回到 `review/一致性对照表.md`,G4 逐行核
 
+## 页面声明约定(机器可查的前提:page-manifest + data-*)
+
+五层清单里「字段落位/死按钮/危险操作确认/权限落位」原本是纯人工项。把声明写进页面,就能交给脚本(⑤)双向核对。约定:
+
+- 每个业务页内嵌一个 `<script type="application/json" id="page-manifest">`,声明本页的:
+  - `fields`: `[{"key","label","type","required","permission"?,"derived"?,"note"?}]` —— 派生展示列(PRD 字典外)必须 `"derived": true` 并写 `note` 说明来源
+  - `states`: `[{"enum","label"}]`;`transitions`: `[{"from","to","op"}]`(op 必须能在 ops 里找到入口)
+  - `ops`: `[{"id","label","prd_ref","confirm"?,"permission"?,"kind"?}]` —— `prd_ref` 指向 PRD 出处(用户故事/节点编号);纯 UI 演示控件标 `"kind": "ui"` 可豁免;危险操作标 `"confirm": true`
+- 页面元素上打对应标记:
+  - `data-field="字段key"` 标在渲染该字段的表头/单元格/表单项上
+  - `data-state="状态enum"` 标在状态徽章上,元素文本 = manifest 声明的中文名
+  - `data-op="操作id"` 标在按钮上;元素须带 onclick/href/data-feedback 之一(防死按钮)
+  - `data-perm="权限点"` —— manifest 里声明了 permission 的字段/操作,页面须有对应标记
+  - `data-confirm="true"` —— manifest 里 confirm:true 的危险操作,元素必须携带
+- 四态(正常/空/错/加载)与权限 denied 态必须以静态 HTML 存在于页面(hidden 切换),不得只写在 JS 字符串里——否则静态扫描不可见,等于没做
+
+脚本核对方向是**双向**的:manifest 声明了但页面没渲染 = 声明不落位;页面渲染了但 manifest 没声明 = 发明字段/状态/操作。给 `--prd` 时再叠加与 PRD 字段字典(名称/必填/类型)、状态枚举、操作出处的交叉核对。
+
 ## 与 test_prototype.py 的对应关系
 
 | 规范条目 | 脚本检查 |
 |---|---|
 | 导航层链接可解析 | ② 链接有效性 |
-| 清单页面 100% 存在 | ① 页面完整性(IA/nav 清单 vs 实际文件,缺页不放行) |
+| 清单页面 100% 存在 | ① 页面完整性(IA/nav 清单 vs 实际文件,缺页不放行;IA 可以是任何含 .html 引用的文本/JS 数据文件) |
 | 无「待补/占位/lorem」残留 | ③ 占位残留检测 |
 | 状态列取值 = 基线枚举 | ④ 状态覆盖(--states,抽查) |
-| 字段落位、四态、权限态、异常入口 | 人工逐页过(脚本不替代人眼) |
+| 字段/状态/操作 声明↔渲染双向一致、死按钮、危险操作二次确认、权限点落位 | ⑤ manifest 声明检查(页面内嵌 page-manifest 后启用) |
+| 字段名称/必填/类型与 PRD 字典一致、状态枚举 ∈ PRD、操作有 PRD 出处 | ⑤ + --prd 交叉核对 |
+| 四态呈现质量、筛选联动、视觉可读性 | 人工逐页过(脚本不替代人眼) |
 
 推荐调用:
 
 ```bash
 python3 scripts/test_prototype.py 10-模块/<模块>/prototype \
-  --ia 11-全局原型/IA.md --states 01-记忆/状态枚举.txt
+  --ia 11-全局原型/IA.md --states 01-记忆/状态枚举.txt --prd 10-模块/<模块>/prd/v0.<n>.md
 ```

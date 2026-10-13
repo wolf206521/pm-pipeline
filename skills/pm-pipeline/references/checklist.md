@@ -52,8 +52,9 @@
 - [ ] **链接有效性**:内部链接与锚点全部可解析,无死链(`test_prototype.py ②`)
 - [ ] **占位残留**:无占位卡/lorem/TODO/「待补」等未完成标记(`test_prototype.py ③`)
 - [ ] **状态覆盖**:基线状态枚举在页面中出现(`test_prototype.py ④ --states`,抽查)
+- [ ] **声明一致**:业务页内嵌 page-manifest,字段/状态/操作 声明↔渲染双向一致,无死按钮,危险操作带 data-confirm,权限点落位(`test_prototype.py ⑤`;给 `--prd <PRD文件>` 时叠加 PRD 字段字典/状态枚举/操作出处交叉核对)
 - [ ] **单页深度**:五层结构齐全(导航/筛选/列表/详情/操作),字段=PRD 字段字典逐项落位,正常/空/错/加载四态与权限态齐备(人工逐页过,对照 prototype-depth.md)
-- [ ] `test_prototype.py <原型目录> --ia <IA清单> --states <状态枚举>` 退出码 0
+- [ ] `test_prototype.py <原型目录> --ia <IA清单> --states <状态枚举> --prd <PRD文件>` 退出码 0
 - [ ] 配了 Jev 时,`check_semantic.py` 的「三方对照真一致」项 PASS(未配则人工核对)
 
 ## G5 · 交付闸门(S5 定稿前)

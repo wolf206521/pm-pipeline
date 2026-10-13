@@ -87,10 +87,10 @@ export KEV_BASE_URL=http://localhost:8009   # 先按 Kev 官方说明启动 kev.
 
 ```bash
 python3 scripts/test_prototype.py 10-模块/M01-客户中心/prototype \
-  --ia 11-全局原型/IA.md --states 01-记忆/状态枚举.txt
+  --ia 11-全局原型/IA.md --states 01-记忆/状态枚举.txt --prd 10-模块/M01-客户中心/prd/v0.3.md
 ```
 
-四项检查:① 页面完整性(IA/导航清单 100% 覆盖,缺页不放行)② 链接有效性(内部链接/锚点可解析)③ 占位残留(lorem/TODO/「待补」等)④ 状态覆盖(基线状态枚举在页面中出现)。单页深度规范见 `references/prototype-depth.md`。
+五项检查:① 页面完整性(IA/导航清单 100% 覆盖,缺页不放行)② 链接有效性(内部链接/锚点可解析)③ 占位残留(lorem/TODO/「待补」等)④ 状态覆盖(基线状态枚举在页面中出现)⑤ manifest 声明检查(页面内嵌 `page-manifest` 声明字段/状态/操作,与 `data-field`/`data-state`/`data-op`/`data-perm` 标记双向核对;给 `--prd` 再与 PRD 字段字典、状态枚举、操作出处交叉核对)。声明约定与单页深度规范见 `references/prototype-depth.md`。
 
 ## 五阶段循环
 

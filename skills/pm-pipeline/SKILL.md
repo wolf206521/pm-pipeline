@@ -104,7 +104,7 @@ S1 需求采集 ──G1──> S2 PRD ──G2──> S3 流程图 ──G3─�
 | `new_module.py` | `new_module.py M02 客服中心` | 建模块骨架(state.md + 对照表) |
 | `check_all.py` | `check_all.py M02-客服中心` | 串联 check_prd/check_mermaid + 人工核对提醒;自动探测多工具 skills 目录 |
 | `check_semantic.py` | `check_semantic.py M02-客服中心 [--threshold 0.7]` | Jev 语义闸门:指标可量化/状态机有出口/字段字典完整/三方对照真一致;无 key 降级为人工核对清单 |
-| `test_prototype.py` | `test_prototype.py <原型目录> [--ia IA.md] [--states 状态枚举.txt]` | 原型四项检查:页面完整性/链接有效性/占位残留/状态覆盖 |
+| `test_prototype.py` | `test_prototype.py <原型目录> [--ia IA.md] [--states 状态枚举.txt] [--prd PRD.md]` | 原型五项检查:页面完整性/链接有效性/占位残留/状态覆盖/manifest 声明↔渲染双向核对(--prd 叠加 PRD 交叉核对) |
 | `jev_decide.py` | `jev_decide.py request.json [--threshold 0.85]` | Jev 调用适配器:类型化决策+置信度阈值分流(auto/human),无 key 优雅降级 |
 | `export_docx.py` | `export_docx.py M02-客服中心 [版本] [--prefix 前缀]` | pandoc 导出 docx 到 20-交付/ |
 | `refresh_baseline.py` | `refresh_baseline.py [--auth 目录] [--archive 目录]` | 扫描源资料,自动选版,重建基线+提取缓存 |
