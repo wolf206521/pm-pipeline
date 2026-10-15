@@ -49,6 +49,7 @@ updated: "2026-10-13"
 - [references/evolution.md](references/evolution.md) —— 自我进化机制
 - [references/jev-integration.md](references/jev-integration.md) —— Jev 决策集成(决策点清单/阈值模式/边界)
 - [references/prototype-depth.md](references/prototype-depth.md) —— 单页深度规范(五层结构+状态四态+呈现规范+页面声明约定)
+- [references/object-driven.md](references/object-driven.md) —— 对象驱动原型法(共享业务对象登记+多端视图裁剪+变更联动机检)
 - [templates/](templates/) —— AGENTS.md / MEMORY.md / state.md / 决策日志 / G1确认单 骨架
 
 ## 工程目录结构(初始化时建立)
