@@ -52,6 +52,7 @@ updated: "2026-10-13"
 - [references/object-driven.md](references/object-driven.md) —— 对象驱动原型法(共享业务对象登记+多端视图裁剪+变更联动机检)
 - [references/versioning-rules.md](references/versioning-rules.md) —— 版本化对象统一规则(V1–V7:留痕/当前唯一/可对比/引用冻结/终态保护)
 - [references/interaction-testing.md](references/interaction-testing.md) —— 交互行为测试(运行器模式:逐页点击、反馈断言、常见缺陷模式)
+- [references/prototype-workflow.md](references/prototype-workflow.md) —— 原型并行生成工作流(八步流程+事故纪律+数据一致性纪律)
 - [templates/](templates/) —— AGENTS.md / MEMORY.md / state.md / 决策日志 / G1确认单 骨架
 
 ## 工程目录结构(初始化时建立)
