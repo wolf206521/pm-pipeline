@@ -54,6 +54,8 @@ updated: "2026-10-13"
 - [references/interaction-testing.md](references/interaction-testing.md) —— 交互行为测试(运行器模式:逐页点击、反馈断言、常见缺陷模式)
 - [references/prototype-workflow.md](references/prototype-workflow.md) —— 原型并行生成工作流(八步流程+事故纪律+数据一致性纪律)
 - [references/handoff-protocol.md](references/handoff-protocol.md) —— 无缝交接协议(多客户端/多账号续跑:三层记忆+开收工仪式+切换策略)
+- [references/rtm.md](references/rtm.md) —— 需求追溯矩阵(机器可检总账:US→模块/页面/状态/事件五维对齐,四项机检防漏登/漂移/越界/悬空)
+- [references/spec-doc.md](references/spec-doc.md) —— 开发说明书(S4.5 页面级施工规格:五段结构+单一事实源纪律+交付边界)
 - [templates/](templates/) —— AGENTS.md / MEMORY.md / state.md / 决策日志 / G1确认单 / HANDOFF 骨架
 
 ## 工程目录结构(初始化时建立)
